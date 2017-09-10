@@ -1,0 +1,16 @@
+#+BEGIN_SRC python
+import sys
+print(sys.version)
+#+END_SRC
+
+#+BEGIN_SRC python :results output
+import wfdb
+record = wfdb.rdsamp('data/100', sampto = 3000)
+annotation = wfdb.rdann('data/100', 'atr', sampto = 3000)
+wfdb.plotrec(record, annotation = annotation, title='Record 100 from MIT-BIH Arrhythmia Database', timeunits = 'seconds', figsize = (15,4), ecggrids = 'all')
+wfdb.plotann(annotation, title = None, timeunits = 'samples', returnfig = False)
+dblist = wfdb.getdblist()
+print(dblist)
+# wfdb.dldatabase('adfecgdb', dlbasedir, records = 'all', annotators = 'all' , keepsubdirs = True, overwrite = False)
+# wfdb.dldatabase('ahadb', os.getcwd())
+#+END_SRC
